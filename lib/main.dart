@@ -18,26 +18,35 @@ class _XylophoneState extends State<Xylophone> {
     final player = AudioCache();
     player.play('assets/note$soundNumber.wav');
   }
-  void buildKey(){
-    FlatButton(
-      onPressed: (){
-        playSound(7);
-      },
-      child: Text('Click Me'),
-      color: Colors.red,
+  Expanded buildKey({Color color, int soundNumber}){
+    return
+    Expanded(
+      child: FlatButton(
+        onPressed: (){
+          playSound(soundNumber);
+        },
+        color: color,
+      ),
     );
   }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: new Scaffold(
-        appBar: AppBar(
-          title: new Text('Xylophone'),
-          backgroundColor: Colors.redAccent,
-        ),
+//        appBar: AppBar(
+//          title: new Text('Xylophone'),
+//          backgroundColor: Colors.redAccent,
+//        ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-
+            buildKey(color: Colors.deepPurple,soundNumber: 1),
+            buildKey(color: Colors.blue,soundNumber: 2),
+            buildKey(color: Colors.lightBlueAccent,soundNumber: 3),
+            buildKey(color: Colors.green,soundNumber: 4),
+            buildKey(color: Colors.yellow,soundNumber: 5),
+            buildKey(color: Colors.orange,soundNumber: 6),
+            buildKey(color: Colors.red,soundNumber: 7)
           ],
         ),
       ),
